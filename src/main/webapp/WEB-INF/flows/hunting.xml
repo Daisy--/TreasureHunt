@@ -14,11 +14,13 @@
             <evaluate expression="treasureService.getCountries()"
                     result="viewScope.countries"/>
         </on-render>
-        <transition on="submit" to="viewChina"/>
-
+        <transition on="submit" to="viewTreasure"/>
+        <on-exit>
+            <set name="flowScope.country" value="requestParameters.country"/>
+        </on-exit>
     </view-state>
 
-    <view-state id="viewChina" view="viewChina">
+    <view-state id="viewTreasure" view="viewTreasure">
         <transition on="returnToIndex" to="home"/>
     </view-state>
 

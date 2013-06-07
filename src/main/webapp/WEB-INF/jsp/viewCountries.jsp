@@ -1,4 +1,3 @@
-<%@ page session="false"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <header>
@@ -13,7 +12,7 @@
     <ul>
 
     <c:forEach var="country" items="${countries}" >
-    <li><a href="${flowExecutionUrl}&_eventId=submit">${country}</a></li>
+    <li><a href="${flowExecutionUrl}&_eventId=submit&country=${country}">${country}</a></li>
     </c:forEach>
 
     </ul>
