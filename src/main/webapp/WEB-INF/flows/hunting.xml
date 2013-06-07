@@ -2,15 +2,22 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
- http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+      http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+    <view-state id="home" view="index">
+        <transition on="viewCountries" to="viewCountries"/>
+
+    </view-state>
+
     <view-state id="viewCountries" view="viewCountries">
         <transition on="submit" to="viewChina">
         </transition>
     </view-state>
+
     <view-state id="viewChina" view="viewChina">
-        <transition on="returnToIndex" to="returnToIndex">
+        <transition on="returnToIndex" to="home">
         </transition>
     </view-state>
-    <end-state id="returnToIndex" view="externalRedirect:servletRelative:/index.jsp">
-    </end-state>
+
 </flow>
