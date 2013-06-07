@@ -7,17 +7,19 @@
 
     <view-state id="home" view="index">
         <transition on="viewCountries" to="viewCountries"/>
-
     </view-state>
 
     <view-state id="viewCountries" view="viewCountries">
-        <transition on="submit" to="viewChina">
-        </transition>
+        <on-render>
+            <evaluate expression="treasureService.getCountries()"
+                    result="viewScope.countries"/>
+        </on-render>
+        <transition on="submit" to="viewChina"/>
+
     </view-state>
 
     <view-state id="viewChina" view="viewChina">
-        <transition on="returnToIndex" to="home">
-        </transition>
+        <transition on="returnToIndex" to="home"/>
     </view-state>
 
 </flow>
