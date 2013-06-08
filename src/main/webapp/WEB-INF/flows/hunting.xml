@@ -4,6 +4,9 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+    <on-start>
+        <evaluate expression="treasureService.init()" result="flowScope.treasureMap"/>
+    </on-start>
 
     <view-state id="home" view="index">
         <transition on="viewCountries" to="viewCountries"/>
@@ -21,6 +24,9 @@
     </view-state>
 
     <view-state id="viewTreasure" view="viewTreasure">
+        <on-render>
+            <evaluate expression="treasureService.hasTreasure(flowScope.treasureMap,flowScope.country)" result="viewScope.treasure"/>
+        </on-render>
         <transition on="returnToIndex" to="home"/>
     </view-state>
 

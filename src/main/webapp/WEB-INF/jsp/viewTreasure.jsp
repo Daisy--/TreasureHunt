@@ -7,7 +7,12 @@
 <body>
 <div class="wrapper">
     <h1>You are in ${country}</h1>
-    <h3>Here</h3>
+    <c:if test="${not empty treasure}">
+        You found <div class="treasure"><span>${treasure}</span></div>
+    </c:if>
+    <c:if test="${empty treasure}">
+        <div>Sorry, it's not in here.</div>
+    </c:if>
     <a href="${flowExecutionUrl}&_eventId=returnToIndex">Return to Home</a>
 </div>
 </body>

@@ -12,6 +12,7 @@
     <ul>
 
     <c:forEach var="country" items="${countries}" >
+
     <li><a href="${flowExecutionUrl}&_eventId=submit&country=${country}">${country}</a></li>
     </c:forEach>
 
