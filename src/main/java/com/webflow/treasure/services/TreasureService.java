@@ -20,7 +20,11 @@ public class TreasureService {
         return treasures;
     }
 
-    public Map<String, String> init() {
+    public Map<String, String> getBag() {
+        return new HashMap<String, String>();
+    }
+
+    public Map<String, String> getTreasureMap() {
         Map<String, String> treasureMap = new HashMap<String, String>();
         Random random = new Random();
         List<String> tempCountries = new ArrayList<String>();
@@ -30,6 +34,19 @@ public class TreasureService {
         }
         return treasureMap;
     }
+
+    public void addTreasure(Map<String,String> treasuresFound,Map<String,String> treasuresMap,String treasure){
+        String tempTreasure;
+        for (String country:treasuresMap.keySet()){
+            tempTreasure = treasuresMap.get(country);
+            if(tempTreasure.equals(treasure)){
+                treasuresFound.put(treasure, country);
+                treasuresMap.remove(country);
+                break;
+            }
+        }
+    }
+
 
     public String hasTreasure(Map<String, String> treasureMap,String country){
         return treasureMap.get(country);

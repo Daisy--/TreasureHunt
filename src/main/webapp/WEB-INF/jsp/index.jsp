@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <header>
 <title>Treasure Game</title>
@@ -16,8 +17,12 @@ This is a treasure finding game. You need to go to different countries to find t
     <a href="${flowExecutionUrl}&_eventId=viewCountries">Start to Hunting</a>
 </div>
 
+<c:if test="${not empty treasureFound}">
 <h3>Treasure you found</h3>
-<div class="Treasure"><span>Gold mine</span><span>Diamond</span></div>
+<c:forEach items="${treasureFound}" var="item" >
+<div class="Treasure"><span><c:out value="${item.key}"/></span> at <label><c:out value="${item.value}"/></label></div>
+</c:forEach>
+</c:if>
 
 
 </div>

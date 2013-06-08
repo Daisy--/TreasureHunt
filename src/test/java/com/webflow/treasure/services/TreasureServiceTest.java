@@ -3,7 +3,7 @@ package com.webflow.treasure.services;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
@@ -31,9 +31,26 @@ public class TreasureServiceTest {
     @Test
     public void shouldInitTreasureMap() throws Exception {
         //when
-        Map<String,String> treasureMap = treasureService.init();
+        Map<String,String> treasureMap = treasureService.getTreasureMap();
 
         //then
         assertThat(treasureMap.keySet().size(),is(treasureService.getTreasures().size()));
+    }
+
+    @Test
+    public void shouldAddTreasure() throws Exception {
+        // given
+        Map<String,String> treasureMap = new HashMap<String,String>();
+        Map<String,String> treasureFound = new HashMap<String,String>();
+        treasureMap.put("country1","treasure1");
+        treasureMap.put("country2","treasure2");
+
+        // when
+        treasureService.addTreasure(treasureFound,treasureMap,"treasure1");
+
+        // then
+        assertThat(treasureMap.keySet().size(),is(1));
+        assertThat(treasureFound.size(),is(1));
+
     }
 }

@@ -9,11 +9,13 @@
     <h1>You are in ${country}</h1>
     <c:if test="${not empty treasure}">
         You found <div class="treasure"><span>${treasure}</span></div>
+        <a href="${flowExecutionUrl}&_eventId=addTreasure&treasure=${treasure}">Hunting</a>
     </c:if>
     <c:if test="${empty treasure}">
         <div>Sorry, it's not in here.</div>
+        <a href="${flowExecutionUrl}&_eventId=returnToIndex">Return to Home</a>
     </c:if>
-    <a href="${flowExecutionUrl}&_eventId=returnToIndex">Return to Home</a>
+
 </div>
 </body>
 </html>

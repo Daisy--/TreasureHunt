@@ -4,8 +4,10 @@
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
+
     <on-start>
-        <evaluate expression="treasureService.init()" result="flowScope.treasureMap"/>
+        <evaluate expression="treasureService.getTreasureMap()" result="flowScope.treasureMap"/>
+        <evaluate expression="treasureService.getBag()" result="flowScope.treasureFound"/>
     </on-start>
 
     <view-state id="home" view="index">
@@ -27,7 +29,13 @@
         <on-render>
             <evaluate expression="treasureService.hasTreasure(flowScope.treasureMap,flowScope.country)" result="viewScope.treasure"/>
         </on-render>
+        <transition on="addTreasure" to="addTreasure"/>
         <transition on="returnToIndex" to="home"/>
     </view-state>
+
+    <action-state id="addTreasure">
+        <evaluate expression="treasureService.addTreasure(flowScope.treasureFound,flowScope.treasureMap,requestParameters.treasure)"/>
+        <transition to="home"/>
+    </action-state>
 
 </flow>
