@@ -22,6 +22,7 @@
         <transition on="submit" to="viewTreasure"/>
         <on-exit>
             <set name="flowScope.country" value="requestParameters.country"/>
+            <evaluate expression="treasureService.calculate()" />
         </on-exit>
     </view-state>
 
@@ -30,12 +31,28 @@
             <evaluate expression="treasureService.hasTreasure(flowScope.treasureMap,flowScope.country)" result="viewScope.treasure"/>
         </on-render>
         <transition on="addTreasure" to="addTreasure"/>
-        <transition on="returnToIndex" to="home"/>
+        <transition on="continueToHunt" to="viewCountries"/>
     </view-state>
 
     <action-state id="addTreasure">
         <evaluate expression="treasureService.addTreasure(flowScope.treasureFound,flowScope.treasureMap,requestParameters.treasure)"/>
-        <transition to="home"/>
+        <transition to="isSuccess"/>
     </action-state>
+
+    <decision-state id="isSuccess">
+        <if test="treasureService.isSuccess()" then="success" else="viewCountries" />
+    </decision-state>
+
+    <view-state id="success">
+        <on-render>
+            <evaluate expression="treasureService.getScore()" result="conversationScope.score"/>
+        </on-render>
+        <transition on="startAgain" to="home"/>
+        <transition on="submitYourScore" to="submitYourScore" />
+    </view-state>
+
+    <subflow-state id="submitYourScore" subflow="submitScore">
+        <transition on="startAgain" to="home"/>
+    </subflow-state>
 
 </flow>

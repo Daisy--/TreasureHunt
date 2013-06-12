@@ -53,4 +53,23 @@ public class TreasureServiceTest {
         assertThat(treasureFound.size(),is(1));
 
     }
+
+    @Test
+    public void shouldGet100WhenGuessThreeTimes() throws Exception {
+        treasureService.calculate();
+        treasureService.calculate();
+        treasureService.calculate();
+
+        assertThat(treasureService.getScore(),is(100));
+    }
+
+    @Test
+    public void shouldGet75WhenGuessFourTimes() throws Exception {
+        treasureService.calculate();
+        treasureService.calculate();
+        treasureService.calculate();
+        treasureService.calculate();
+
+        assertThat(treasureService.getScore(), is(75));
+    }
 }

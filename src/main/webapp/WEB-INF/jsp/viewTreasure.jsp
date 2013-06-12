@@ -13,7 +13,7 @@
     </c:if>
     <c:if test="${empty treasure}">
         <div>Sorry, it's not in here.</div>
-        <a href="${flowExecutionUrl}&_eventId=returnToIndex">Return to Home</a>
+        <a href="${flowExecutionUrl}&_eventId=continueToHunt">Continue to Hunt</a>
     </c:if>
 
 </div>

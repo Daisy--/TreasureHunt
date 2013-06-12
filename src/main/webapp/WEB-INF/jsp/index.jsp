@@ -24,7 +24,6 @@ This is a treasure finding game. You need to go to different countries to find t
 </c:forEach>
 </c:if>
 
-
 </div>
 </body>
 </html>
