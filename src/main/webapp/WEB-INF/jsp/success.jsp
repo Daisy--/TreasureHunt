@@ -8,7 +8,7 @@
 <div class="wrapper">
     <h1>${score} score!Congratulations! You have just found all the treasure! Now you can:</h1>
     <ul>
-    <li><a href="${flowExecutionUrl}&_eventId=returnToIndex">Start Again</a></li>
+    <li><a href="${flowExecutionUrl}&_eventId=startAgain">Start Again</a></li>
     <li><a href="${flowExecutionUrl}&_eventId=submitYourScore">Submit Your Score</a></li>
     </ul
 </div>
